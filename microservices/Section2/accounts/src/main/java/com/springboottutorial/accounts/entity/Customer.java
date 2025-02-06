@@ -1,6 +1,7 @@
 package com.springboottutorial.accounts.entity;
 
 import com.springboottutorial.accounts.dto.AccountsDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

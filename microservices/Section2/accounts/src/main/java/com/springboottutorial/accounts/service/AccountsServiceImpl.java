@@ -12,6 +12,7 @@ import com.springboottutorial.accounts.repository.AccountsRepository;
 import com.springboottutorial.accounts.dto.CustomerDto;
 import com.springboottutorial.accounts.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -40,10 +41,8 @@ public class AccountsServiceImpl implements IAccountsService {
 
         }
 
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("Admin");
-
-        System.out.println(customer);
+//        customer.setCreatedAt(LocalDateTime.now());
+//        customer.setCreatedBy("Admin");
 
         Customer savedCustomer = customerRepository.save(customer);
         accountsRepository.save(createNewAccount(savedCustomer));
@@ -141,8 +140,8 @@ public class AccountsServiceImpl implements IAccountsService {
         newAccount.setAccount_number(randomAccountNumber);
         newAccount.setAccount_type(Accountsconstants.SAVINGS);
         newAccount.setBranch_address(Accountsconstants.ADDRESS);
-        newAccount.setCreatedAt(LocalDateTime.now());
-        newAccount.setCreatedBy("Admin");
+//        newAccount.setCreatedAt(LocalDateTime.now());
+//        newAccount.setCreatedBy("Admin");
         return newAccount;
 
     }

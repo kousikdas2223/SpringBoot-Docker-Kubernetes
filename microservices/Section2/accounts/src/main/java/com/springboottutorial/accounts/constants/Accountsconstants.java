@@ -26,6 +26,8 @@ public class Accountsconstants  {
     public static final String STATUS_500 = "500";
     public static final String MESSAGE_500 = "An error occurred, please try again later";
 
-
+    public static final String STATUS_417 = "417";
+    public static final String MESSAGE_417_UPDATE = "Update failed. Please try again later";
+    public static final String MESSAGE_417_DELETE = "Update failed. Please try again later";
 
 }
