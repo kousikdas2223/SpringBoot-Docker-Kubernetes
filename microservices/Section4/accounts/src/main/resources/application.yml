@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name:
+  datasource:
+    url: jdbc:h2:mem:bankdb
+    username: sa
+    password: ' '
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.H2Dialect
+
