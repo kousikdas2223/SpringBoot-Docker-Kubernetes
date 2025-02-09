@@ -16,4 +16,9 @@ spring:
     hibernate:
       ddl-auto: update
       database-platform: org.hibernate.dialect.H2Dialect
+management:
+  metrics:
+    enable:
+      system: false
+
 
