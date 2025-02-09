@@ -97,8 +97,9 @@
 				<configuration>
 					<image>
 						<name>daskous/springboot-api:s4-${project.artifactId}</name> <!-- Your desired image name and tag -->
-						<builder>paketobuildpacks/builder:base</builder> <!-- Optional builder -->
+						<builder>paketobuildpacks/builder:full</builder> <!-- Optional builder -->
 						<env>
+							<BP_MEMORY_CALCULATOR>false</BP_MEMORY_CALCULATOR>
 							<BP_JVM_VERSION>17</BP_JVM_VERSION> <!-- Java version -->
 						</env>
 					</image>
