@@ -1,0 +1,25 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: "loans"
+  profiles:
+    active: qa
+  datasource:
+    url: jdbc:h2:mem:bankdb
+    username: sa
+    password: ' '
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.H2Dialect
+    auditing:
+      enabled: true
+  config:
+    import: "configserver:http://localhost:8071"
+

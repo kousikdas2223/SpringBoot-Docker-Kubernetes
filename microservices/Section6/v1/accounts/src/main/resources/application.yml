@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name:
+  datasource:
+    url: jdbc:h2:mem:bankdb
+    username: sa
+    password: ' '
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.H2Dialect
+  config:
+    import:
+      - "classpath:application_qa.yml"
+      - "classpath:application_prod.yml"
+  profiles:
+    active:
+      - "qa"
+
+management:
+  metrics:
+    enable:
+      system: false
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to MyBank Accounts API Service"
+  contactDetails:
+    name: "Kousik Das"
+    email: "kousik.das2223@gmail.com"
+  supportNumbers:
+    - 555-555-5555
+    - 666-666-6666
+
