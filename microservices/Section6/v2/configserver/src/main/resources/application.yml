@@ -2,7 +2,8 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    #active: native
+    active: git
   cloud:
     config:
       server:
@@ -10,6 +11,15 @@ spring:
         #search-locations: "classpath:/config"
         #search-locations: "file:///D://Learning//Udemy//SpringBoot-Docker-Kubernetes//microservices//Section6//v2//configserver//src//main//resources//config"
         #uri: "http://localhost:8071"
+       git:
+        uri: "https://github.com/kousikdas2223/config-server.git"
+        default-label: develop
+        timeout: 5
+        clone-on-start: true
+        force-pull: true
+
+encrypt:
+  key: "8u=*a`4km!-IlNI"
 
 
 server:
