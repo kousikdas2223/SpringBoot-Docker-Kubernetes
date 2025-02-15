@@ -1,0 +1,12 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to MyBank Accounts API Service"
+  contactDetails:
+    name: "Kousik Das"
+    email: "kousik.das2223@gmail.com"
+  supportNumbers:
+    - 555-555-5555
+    - 666-666-6666
+
