@@ -1,4 +1,4 @@
-package com.springboottutorial.cards.service;
+package com.springboottutorial.cards.service.impl;
 
 import com.springboottutorial.cards.Repository.CardsRepository;
 import com.springboottutorial.cards.constants.CardsConstants;
@@ -7,6 +7,7 @@ import com.springboottutorial.cards.entity.Cards;
 import com.springboottutorial.cards.exceptions.CardsAlreadyExistsException;
 import com.springboottutorial.cards.exceptions.ResourceNotFoundException;
 import com.springboottutorial.cards.mapper.CardsMapper;
+import com.springboottutorial.cards.service.ICardsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

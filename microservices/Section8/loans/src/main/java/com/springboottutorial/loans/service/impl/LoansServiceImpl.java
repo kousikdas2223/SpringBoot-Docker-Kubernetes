@@ -1,4 +1,4 @@
-package com.springboottutorial.loans.service;
+package com.springboottutorial.loans.service.impl;
 
 import com.springboottutorial.loans.constants.LoansConstants;
 import com.springboottutorial.loans.dto.LoansDto;
@@ -7,6 +7,7 @@ import com.springboottutorial.loans.exception.LoansAlreadyExistException;
 import com.springboottutorial.loans.exception.ResourceNotFoundException;
 import com.springboottutorial.loans.mapper.LoansMapper;
 import com.springboottutorial.loans.repository.LoansRepository;
+import com.springboottutorial.loans.service.ILoansService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

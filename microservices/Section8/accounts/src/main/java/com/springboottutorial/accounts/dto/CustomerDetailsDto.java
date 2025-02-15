@@ -9,10 +9,10 @@ import lombok.Data;
 
 @Data
 @Schema(
-        name = "Customer",
-        description = "This DTO holds the customer related data"
+        name = "Customer Details",
+        description = "This DTO holds the customer, accounts, cards and loans related data"
 )
-public class CustomerDto {
+public class CustomerDetailsDto {
 
     @Schema(
             description = "Name of the customer",
@@ -43,4 +43,15 @@ public class CustomerDto {
             description = "Account details of the customer"
     )
     private AccountsDto accountsDto;
+
+    @Schema(
+            description = "Cards details of the customer"
+    )
+    private CardsDto cardsDto;
+
+    @Schema(
+            description = "Loans details of the customer"
+    )
+    private LoansDto loansDto;
 }
+

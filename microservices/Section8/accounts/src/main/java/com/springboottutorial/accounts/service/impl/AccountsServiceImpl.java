@@ -1,4 +1,4 @@
-package com.springboottutorial.accounts.service;
+package com.springboottutorial.accounts.service.impl;
 
 import com.springboottutorial.accounts.constants.Accountsconstants;
 import com.springboottutorial.accounts.dto.AccountsDto;
@@ -11,11 +11,10 @@ import com.springboottutorial.accounts.mapper.CustomerMapper;
 import com.springboottutorial.accounts.repository.AccountsRepository;
 import com.springboottutorial.accounts.dto.CustomerDto;
 import com.springboottutorial.accounts.repository.CustomerRepository;
+import com.springboottutorial.accounts.service.IAccountsService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 

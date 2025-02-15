@@ -1,7 +1,6 @@
 package com.springboottutorial.accounts.service;
 
 import com.springboottutorial.accounts.dto.CustomerDto;
-import com.springboottutorial.accounts.entity.Customer;
 
 public interface IAccountsService {
 
