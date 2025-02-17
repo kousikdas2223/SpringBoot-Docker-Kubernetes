@@ -110,31 +110,32 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<!--			<plugin>-->
-			<!--				<groupId>org.springframework.boot</groupId>-->
-			<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--				<version>3.0.0</version> &lt;!&ndash; Make sure this is the latest version &ndash;&gt;-->
-			<!--				<configuration>-->
-			<!--					<image>-->
-			<!--						<name>daskous/springboot-api:s4-${project.artifactId}</name> &lt;!&ndash; Your desired image name and tag &ndash;&gt;-->
-			<!--						<builder>paketobuildpacks/builder:full</builder> &lt;!&ndash; Optional builder &ndash;&gt;-->
-			<!--						<env>-->
-			<!--							<BP_MEMORY_CALCULATOR>false</BP_MEMORY_CALCULATOR>-->
-			<!--							<BP_JVM_VERSION>17</BP_JVM_VERSION> &lt;!&ndash; Java version &ndash;&gt;-->
-			<!--						</env>-->
-			<!--					</image>-->
-			<!--				</configuration>-->
-			<!--			</plugin>-->
 			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>jib-maven-plugin</artifactId>
-				<version>3.4.4</version> <!-- Make sure this is the latest version -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.0.0</version> <!-- Make sure this is the latest version -->
 				<configuration>
-					<to>
-						<image>daskous/springboot-api:s7-${project.artifactId}</image> <!-- Your desired image name and tag -->
-					</to>
+					<image>
+						<name>daskous/springboot-api:s8-${project.artifactId}
+						</name> <!-- Your desired image name and tag -->
+						<builder>paketobuildpacks/builder:full</builder> <!-- Optional builder -->
+						<env>
+							<BP_MEMORY_CALCULATOR>false</BP_MEMORY_CALCULATOR>
+							<BP_JVM_VERSION>17</BP_JVM_VERSION> <!-- Java version -->
+						</env>
+					</image>
 				</configuration>
 			</plugin>
+			<!--			<plugin>-->
+<!--				<groupId>com.google.cloud.tools</groupId>-->
+<!--				<artifactId>jib-maven-plugin</artifactId>-->
+<!--				<version>3.4.4</version> &lt;!&ndash; Make sure this is the latest version &ndash;&gt;-->
+<!--				<configuration>-->
+<!--					<to>-->
+<!--						<image>daskous/springboot-api:s7-${project.artifactId}</image> &lt;!&ndash; Your desired image name and tag &ndash;&gt;-->
+<!--					</to>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

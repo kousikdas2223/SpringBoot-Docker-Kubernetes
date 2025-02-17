@@ -68,6 +68,21 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.0.0</version> <!-- Make sure this is the latest version -->
+				<configuration>
+					<image>
+						<name>daskous/springboot-api:s8-${project.artifactId}</name> <!-- Your desired image name and tag -->
+						<builder>paketobuildpacks/builder:full</builder> <!-- Optional builder -->
+						<env>
+							<BP_MEMORY_CALCULATOR>false</BP_MEMORY_CALCULATOR>
+							<BP_JVM_VERSION>17</BP_JVM_VERSION> <!-- Java version -->
+						</env>
+					</image>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
