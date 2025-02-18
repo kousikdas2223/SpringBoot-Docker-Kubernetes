@@ -1,8 +1,8 @@
 spring:
     application:
-        name: eureka-server
+        name: eurekaserver
     config:
-      import: "optional:configserver:http://localhost:8071"
+      import: "optional:configserver:http://localhost:8071/"
 management:
   endpoints:
     web:
@@ -21,9 +21,3 @@ management:
     health:
       probes:
         enabled: true
-server:
-  port: 8070
-
-eureka:
-  server:
-    defaultZone: http://localhost:8070/eureka/

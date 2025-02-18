@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -22,11 +24,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(
-        name="Loans API",
+        name = "Loans API",
         description = "Interface for Loans API to perform CRUD operations on Loan table"
 )
 @RestController
-@RequestMapping(path= "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
 public class LoansController {
 
@@ -41,11 +43,13 @@ public class LoansController {
 //    @Value("${build.version}")
 //    private String buildInformation;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoansController.class);
+
     @Autowired
     private Environment env;
 
     @Operation(
-            summary="Create Loan",
+            summary = "Create Loan",
             description = "This end point will create a loan record with a mobile number"
     )
     @ApiResponse(
@@ -54,8 +58,8 @@ public class LoansController {
     )
     @PostMapping("/createLoan")
     public ResponseEntity<ResponseDto> createLoans(@Valid @RequestParam
-                                @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
-                                String mobileNumber) {
+                                                   @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
+                                                   String mobileNumber) {
         loansService.createLoans(mobileNumber);
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -64,7 +68,7 @@ public class LoansController {
     }
 
     @Operation(
-            summary="Fetch Loan",
+            summary = "Fetch Loan",
             description = "This end point will fetch loan details based on a mobile number"
     )
     @ApiResponse(
@@ -72,9 +76,13 @@ public class LoansController {
             responseCode = "200"
     )
     @GetMapping("/fetchLoan")
-    public ResponseEntity<LoansDto> fetchLoansDetails(@Valid @RequestParam
-                                                          @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
-                                                          String mobileNumber) {
+    public ResponseEntity<LoansDto> fetchLoansDetails(@Valid
+                                                      @RequestHeader("my_bank_correlation_id") String correlationId,
+                                                      @RequestParam
+                                                      @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
+                                                      String mobileNumber) {
+
+        logger.debug("Correlation Id: " + correlationId);
 
         LoansDto loansDetails = loansService.fetchLoansDetails(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK)
@@ -82,7 +90,7 @@ public class LoansController {
     }
 
     @Operation(
-            summary="Update Loan",
+            summary = "Update Loan",
             description = "This end point will update a loan record"
     )
     @ApiResponses({
@@ -101,7 +109,7 @@ public class LoansController {
 
         boolean isUpdated = loansService.updateLoanDetails(loansDto);
 
-        if(isUpdated) {
+        if (isUpdated) {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
         } else {
@@ -111,7 +119,7 @@ public class LoansController {
     }
 
     @Operation(
-            summary="Delete Loan",
+            summary = "Delete Loan",
             description = "This end point will delete a loan record"
     )
     @ApiResponses({
@@ -127,11 +135,11 @@ public class LoansController {
     })
     @DeleteMapping("/deleteLoan")
     public ResponseEntity<ResponseDto> deleteLoanDetails(@Valid @RequestParam
-                                     @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
-                                     String mobileNumber) {
+                                                         @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
+                                                         String mobileNumber) {
         boolean isDeleted = loansService.deleteLoanDetails(mobileNumber);
 
-        if(isDeleted) {
+        if (isDeleted) {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
         } else {
@@ -164,7 +172,7 @@ public class LoansController {
 
 
     @Operation(
-            summary="Loans API JDK Information",
+            summary = "Loans API JDK Information",
             description = "This end point will provide jdk information for loans API"
     )
     @ApiResponses({
@@ -185,7 +193,7 @@ public class LoansController {
     }
 
     @Operation(
-            summary="Loans Contact Information",
+            summary = "Loans Contact Information",
             description = "This end point will provide contact information for loans API"
     )
     @ApiResponses({
