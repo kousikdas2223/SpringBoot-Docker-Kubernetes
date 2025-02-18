@@ -10,6 +10,16 @@ spring:
           enabled: false
           lowerCaseServiceId: true
 
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+      
 management:
   endpoints:
     web:
@@ -26,6 +36,9 @@ info:
     name: "gatewayserver"
     description: "My Bank Gateway Server Application"
     version: "1.0.0"
+
+server:
+  port: 8073
 
 logging:
   level:
