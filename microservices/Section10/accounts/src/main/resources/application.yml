@@ -1,0 +1,72 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: prod
+  datasource:
+    url: jdbc:mysql://localhost:3308/accountsdb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+  config:
+    import: "optional:configserver:http://localhost:8071"
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    enableRedirects: false
+    service-url:
+      defaultZone: http://eureka-server:8070/eureka
+
+
+management:
+  metrics:
+    enable:
+      system: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      readiness-state:
+        enabled: true
+      liveness-state:
+        enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+info:
+  app:
+    version: "1.0.0"
+    name: "accounts"
+    description: "MyBank Accounts Service"
+
+logging:
+  level:
+    com:
+      springboottutorial:
+        accounts: DEBUG
+
