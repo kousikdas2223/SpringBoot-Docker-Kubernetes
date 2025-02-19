@@ -56,8 +56,8 @@ services:
       test: ["CMD", "curl", "--fail", "http://localhost:8070/actuator/health/readiness"]
       interval: 10s
       timeout: 5s
-      retries: 4
-      start_period: 30s
+      retries: 10
+      start_period: 10s
     extends:
       file: common-config.yml
       service: microservice-configserver-config
@@ -70,7 +70,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      configserver:
+      eurekaserver:
         condition: service_healthy
       accounts_db:
         condition: service_healthy
@@ -93,7 +93,7 @@ services:
     ports:
       - "9000:9000"
     depends_on:
-      configserver:
+      eurekaserver:
         condition: service_healthy
       cards_db:
         condition: service_healthy
@@ -116,7 +116,7 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      configserver:
+      eurekaserver:
         condition: service_healthy
       loans_db:
         condition: service_healthy

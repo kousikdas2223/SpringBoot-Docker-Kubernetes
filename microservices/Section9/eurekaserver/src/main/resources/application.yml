@@ -1,8 +1,9 @@
 spring:
-    application:
-        name: eurekaserver
-    config:
-      import: "optional:configserver:http://localhost:8071/"
+  application:
+    name: "eurekaserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
 management:
   endpoints:
     web:
@@ -21,3 +22,13 @@ management:
     health:
       probes:
         enabled: true
+
+eureka:
+  client:
+    service-url:
+      default-zone: "http://localhost:8070/eureka/"  # Correct the port here
+
+  instance:
+    hostname: "localhost"  # Set the hostname to localhost or your external IP (for Docker)
+    prefer-ip-address: true  # Optionally, use the IP address to avoid issues with Docker network isolation
+
