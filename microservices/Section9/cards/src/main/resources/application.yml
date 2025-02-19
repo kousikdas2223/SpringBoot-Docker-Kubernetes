@@ -26,7 +26,7 @@ eureka:
     registerWithEureka: true
     enableRedirects: false
     service-url:
-      defaultZone: http://eurekaserver:8070/eureka
+      defaultZone: http://eureka-server:8070/eureka
 
 management:
   metrics:
