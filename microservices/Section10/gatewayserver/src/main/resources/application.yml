@@ -9,7 +9,17 @@ spring:
         locator:
           enabled: false
           lowerCaseServiceId: true
-
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 2s
+    circuitbreaker:
+      resilience4j:
+        configs:
+          default:
+            sliding-window-size: 10
+            failure-rate-threshold: 50
+            wait-duration-in-open-state: 10000
+            permitted-number-of-calls-in-half-open-state: 2
 
 eureka:
   instance:
@@ -18,7 +28,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://eureka-server:8070/eureka
+      defaultZone: http://localhost:8070/eureka
       
 management:
   endpoints:
@@ -45,3 +55,6 @@ logging:
     com:
       springboottutorial:
         gatewayserver: DEBUG
+
+
+
