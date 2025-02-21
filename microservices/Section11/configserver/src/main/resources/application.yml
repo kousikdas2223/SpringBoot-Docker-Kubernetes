@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    # active: native
+    active: git
+  cloud:
+    config:
+      server:
+        #       native:
+        #        #search-locations: "classpath:/config"
+        #        #search-locations: "file:///D://Learning//Udemy//SpringBoot-Docker-Kubernetes//microservices//Section6//v2//configserver//src//main//resources//config"
+        #        #uri: "http://localhost:8071"
+        git:
+          uri: "https://github.com/kousikdas2223/config-server.git"
+          default-label: develop
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+        monitor:
+          enabled: true
+        encrypt:
+          algorithm: AES
+          key: "U2FsdGVkX19o5pY0uQEv6dFxFwp0I5sI7R70StpdkzM=/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    db:
+        enabled: true
+    diskSpace:
+        enabled: true
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+
+server:
+  port: 8071
+
+logging:
+  level:
+    org.springframework.cloud.config.server: DEBUG
+    org.springframework.security.crypto: DEBUG

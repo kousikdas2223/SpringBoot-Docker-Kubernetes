@@ -1,0 +1,101 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: prod
+  datasource:
+    url: jdbc:mysql://localhost:3308/accountsdb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+  config:
+    import: "optional:configserver:http://localhost:8071"
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 1000
+        failure-rate-threshold: 90
+        wait-duration-in-open-state: 10000
+        permitted-number-of-calls-in-half-open-state: 5
+  retry:
+    configs:
+      default:
+        waitDuration: 100
+        maxAttempts: 10
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        ignore-exceptions:
+          - java.lang.NullPointerException
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+  ratelimiter:
+    configs:
+      default:
+        timeout-duration: 1000
+        limit-for-period: 5
+        limit-refresh-period: 5000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    enableRedirects: false
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
+
+management:
+  metrics:
+    enable:
+      system: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      readiness-state:
+        enabled: true
+      liveness-state:
+        enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+info:
+  app:
+    version: "1.0.0"
+    name: "accounts"
+    description: "MyBank Accounts Service"
+
+logging:
+  level:
+    com:
+      springboottutorial:
+        accounts: DEBUG
+

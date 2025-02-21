@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to MyBank Accounts API Service - Production Environment"
+  contactDetails:
+    name: "Kousik Das"
+    email: "kousik.das2223@gmail.com"
+  supportNumbers:
+    - 222-555-5555
+    - 333-666-6666
