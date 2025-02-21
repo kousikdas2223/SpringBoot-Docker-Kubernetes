@@ -27,17 +27,27 @@ resilience4j:
   circuitbreaker:
     configs:
       default:
-        sliding-window-size: 10
-        failure-rate-threshold: 50
+        sliding-window-size: 1000
+        failure-rate-threshold: 90
         wait-duration-in-open-state: 10000
-        permitted-number-of-calls-in-half-open-state: 2
+        permitted-number-of-calls-in-half-open-state: 5
   retry:
     configs:
       default:
-        waitDuration: 500
-        maxAttempts: 3
+        waitDuration: 100
+        maxAttempts: 10
         enable-exponential-backoff: true
         exponential-backoff-multiplier: 2
+        ignore-exceptions:
+          - java.lang.NullPointerException
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+  ratelimiter:
+    configs:
+      default:
+        timeout-duration: 1000
+        limit-for-period: 5
+        limit-refresh-period: 5000
 
 eureka:
   instance:

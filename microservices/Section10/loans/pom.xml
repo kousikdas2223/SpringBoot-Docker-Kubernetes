@@ -116,7 +116,7 @@
 				<version>3.0.0</version> <!-- Make sure this is the latest version -->
 				<configuration>
 					<image>
-						<name>daskous/springboot-api:s9-${project.artifactId}
+						<name>daskous/springboot-api:s10-${project.artifactId}
 						</name> <!-- Your desired image name and tag -->
 						<builder>paketobuildpacks/builder:full</builder> <!-- Optional builder -->
 						<env>
