@@ -24,6 +24,10 @@ spring:
           key: "U2FsdGVkX19o5pY0uQEv6dFxFwp0I5sI7R70StpdkzM=/"
 
 management:
+  metrics:
+    tags:
+      enabled: true
+      application: ${spring.application.name}
   endpoints:
     web:
       exposure:
