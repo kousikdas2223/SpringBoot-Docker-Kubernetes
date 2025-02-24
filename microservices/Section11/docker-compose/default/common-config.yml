@@ -22,6 +22,11 @@ services:
       resources:
         limits:
           memory: 1000m
+    environment:
+      JAVA_TOOL_OPTIONS: "-javaagent:/workspace/BOOT-INF/lib/opentelemetry-javaagent-2.13.1.jar -Dotel.logs.exporter=none"
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4318
+      OTEL_METRICS_EXPORTER: none
+      OTEL_LOG_EXPORTER: none
 
   microservice-configserver-config:
     extends:
