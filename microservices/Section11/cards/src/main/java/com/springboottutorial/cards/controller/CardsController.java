@@ -71,10 +71,10 @@ public class CardsController {
                                                  @RequestParam
                                                  @Pattern(regexp = "[0-9]{10}", message = "Mobile number should be 10 digits")
                                                  String mobileNumber) {
-        logger.debug("Correlation Id: " + correlationId);
 
+        logger.debug("fetchCardsrDetails method started");
         CardsDto cardsDto = cardsService.getCards(mobileNumber);
-
+        logger.debug("fetchCardsrDetails method completed");
         if(cardsDto != null) {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(cardsDto);

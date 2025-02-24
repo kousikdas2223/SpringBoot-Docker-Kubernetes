@@ -24,19 +24,11 @@ spring:
           key: "U2FsdGVkX19o5pY0uQEv6dFxFwp0I5sI7R70StpdkzM=/"
 
 management:
-  metrics:
-    tags:
-      enabled: true
-      application: ${spring.application.name}
   endpoints:
     web:
       exposure:
         include: "*"
   health:
-    db:
-        enabled: true
-    diskSpace:
-        enabled: true
     readiness-state:
       enabled: true
     liveness-state:
@@ -45,12 +37,12 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
+encrypt:
+  key: "45D81EC1EF61DF9AD8D3E5BB397F9"
 
 server:
   port: 8071
-
-logging:
-  level:
-    org.springframework.cloud.config.server: DEBUG
-    org.springframework.security.crypto: DEBUG
